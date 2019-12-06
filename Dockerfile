@@ -11,8 +11,13 @@ RUN apt-get install -y -q build-essential ruby-full python python-docutils ruby-
 RUN apt-get clean
 RUN rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
+# Initialize wiki data
+RUN mkdir /root/wikidata
+RUN git init /root/wikidata
+RUN touch /root/wikidata/home.md
+
 # Install gollum
-COPY gollum-install.sh .
+COPY ./gollum-install.sh .
 RUN bash gollum-install.sh
 
 # Install gollum extensions / dependencies
@@ -20,17 +25,28 @@ RUN gem install redcarpet github-markdown
 RUN gem install omniauth-github github-markup
 
 # Install omnigollum
-COPY omnigollum-install.sh .
+COPY ./omnigollum-install.sh .
 RUN bash omnigollum-install.sh
 
-# Initialize wiki data
-RUN mkdir /root/wikidata
-RUN git init /root/wikidata
-RUN touch /root/wikidata/home.md
+#Install Cron
+RUN apt-get update
+RUN apt-get -y install cron python3-pip
 
+# Install wikitranslate
+COPY ./wikitranslate /wikitranslate
+COPY ./crontab .
+COPY ./wikitranslate-install.sh .
+RUN bash wikitranslate-install.sh
+
+# Copy ruby config
 COPY ./config.rb .
+
+# Copy git hooks
+COPY ./hooks/. /root/wikidata/.git/hooks/
 
 # Expose gollum port 80
 EXPOSE 80
 
-ENTRYPOINT ["/usr/local/bin/gollum", "/root/wikidata", "--config", "config.rb", "--port", "80"]
+# Run
+COPY ./entrypoint.sh .
+ENTRYPOINT bash entrypoint.sh

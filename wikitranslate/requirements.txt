@@ -1,0 +1,13 @@
+beautifulsoup4==4.7.1
+certifi==2019.3.9
+cffi==1.12.2
+chardet==3.0.4
+cmarkgfm==0.4.2
+idna==2.8
+Jinja2==2.10
+MarkupSafe==1.1.1
+pycparser==2.19
+requests==2.21.0
+soupsieve==1.9
+urllib3==1.24.1
+Werkzeug==0.15.6

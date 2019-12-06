@@ -1,5 +1,10 @@
 Gollum::Page.send :remove_const, :FORMAT_NAMES if defined? Gollum::Page::FORMAT_NAMES
 
+# Hooks
+Gollum::Hook.register(:post_commit, :hook_id) do |committer, sha1|
+  system('/root/wikidata/.git/hooks/post-commit')
+end
+
 ## Omni Auth
 require 'omnigollum'
 require 'omniauth/strategies/github'
