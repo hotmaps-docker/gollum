@@ -35,11 +35,11 @@ COMMIT=".commit-id"	# file with git commit from which to get latest changes
 COMMIT_ID=$(cat $BASE/$COMMIT)
 
 # Generate .commit-id file
-if [ -f "${BASE}${COMMIT}" ]; then
-	echo "${BASE}${COMMIT} found!"
+if [ -f "${BASE}/${COMMIT}" ]; then
+	echo "${BASE}/${COMMIT} found!"
 else
-	echo "${BASE}${COMMIT} not found. Generating..."
-	git -C $BASE rev-parse HEAD > ${BASE}${COMMIT}
+	echo "${BASE}/${COMMIT} not found. Generating..."
+	git -C $BASE rev-parse HEAD > ${BASE}/${COMMIT}
 fi
 
 # Handle commit ID parameter
