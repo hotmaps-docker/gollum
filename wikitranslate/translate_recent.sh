@@ -99,7 +99,7 @@ cd $LOCATION
 
 echo "starting translation ..."
 python3 wiki_translate.py "$BASE/$TRANSLATE" --target-lang ${TARGET_LANGS[@]} --alternative-root "$BASE"
-deactivate
+
 echo "translation finished!"
 
 
