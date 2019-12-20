@@ -42,7 +42,7 @@ RUN bash wikitranslate-install.sh
 COPY ./config.rb .
 
 # Copy git hooks
-COPY ./hooks/. /root/wikidata/.git/hooks/
+COPY ./hooks/. /root/hooks/
 
 # Expose gollum port 80
 EXPOSE 80
