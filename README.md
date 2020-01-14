@@ -25,6 +25,9 @@ docker run  -d --rm
             -e GITHUB_CLIENT_ID=0123456789
             -e GITHUB_CLIENT_SECRET=0123456789
             -e AUTH_USERS=email1,email2,email3
+            -e GIT_USER_EMAIL=no-reply@mywebsite.com
+            -e GIT_USER_NAME=web
+            -e GIT_BRANCH=master
             -v /path/to/wiki_dir:/root/wikidata
             -v /path/to/ssh_dir:/root/.ssh
             hotmaps/wiki
@@ -64,12 +67,16 @@ Here are the environment variables that you need to configure to make the contai
 - **GITHUB_CLIENT_ID**: OAuth provider app client ID for GitHub
 - **GITHUB_CLIENT_SECRET**: OAuth provider app client secret for GitHub
 - **AUTH_USERS**: list of user emails separated by a coma (eg. email1,email2,email3)
+- **GIT_USER_EMAIL**: email used for committing, pushing and pulling code != author
+- **GIT_USER_NAME**: name used for committing, pushing and pulling code != author
+- **GIT_BRANCH**: git branch used by gollum
 
 #### Volumes
 
 Here is the volumes you need to configure:
 
 - **/path/to/wiki_dir**:/root/wikidata (the git repository that gollum will use)
+- **/path/to/ssh_dir**:/root/.ssh (see git hooks section for more information)
 
 #### Git hooks
 

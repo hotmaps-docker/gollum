@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Automatically push commits to origin
-git push origin master
+git push origin $GIT_BRANCH
