@@ -124,7 +124,7 @@ def get_already_written (index, start=0, end=-1):
     """
     already_written = []
 
-    with open(index, 'r') as fd:
+    with codecs.open(index, 'r', 'utf-8') as fd:
         content = fd.read()[start:end]
         # magic numbers 1 and 3, since language codes are two characters long, 
         # excluding leading slash
@@ -149,7 +149,7 @@ def write_index(index, lang_written, source_lang):
         d_lang_to_write[l] = lang.languages[l]
 
     print(d_lang_to_write)
-    with open(index, "w") as fd:
+    with codes.open(index, "w", "utf-8") as fd:
         fd.write(template.render(languages=d_lang_to_write, source_lang=source_lang))
 
 
@@ -220,7 +220,7 @@ def execute(root, source_path, source_lang, target_lang, alternative_root = ""):
                 target_root, mdfile.split('/')[-1]
             )
             
-            with open(mdfile_newpath, "w") as fd:
+            with codecs.open(mdfile_newpath, "w", "utf-8") as fd:
                 if language == source_lang:
                     fd.write(o_md[mdfile])
                 else:
@@ -245,7 +245,7 @@ def execute(root, source_path, source_lang, target_lang, alternative_root = ""):
             print("changing the following file:" + mdfile_newpath)
             #print(os.path.basename(mdfile.split(".md")[0]))
             
-            with open(mdfile_newpath, "r+") as fd:
+            with codecs.open(mdfile_newpath, "r+", "utf-8") as fd:
                 # check if langselect is already contained
                 html = fd.read()
                 i = html.find(langselect_identifier)
@@ -262,7 +262,7 @@ def execute(root, source_path, source_lang, target_lang, alternative_root = ""):
             for l in lang_to_write:
                 d_lang_to_write[l] = lang.languages[l]
 
-            with open(mdfile_newpath, "w+") as fd:
+            with codecs.open(mdfile_newpath, "w+", "utf-8") as fd:
                 # if it is already contained, truncate it
                 if (i >= 0):
                     html = html[:i]
@@ -285,12 +285,12 @@ def execute(root, source_path, source_lang, target_lang, alternative_root = ""):
                     if (not(os.path.isfile(mdfile_update))):
                         continue
                 
-                with open(mdfile_update, "r+") as fd:
+                with codecs.open(mdfile_update, "r+", "utf-8") as fd:
                     # check if langselect is already contained
                     html = fd.read()
                     i = html.find(langselect_identifier)
                 
-                with open(mdfile_update, 'w+') as fd:
+                with codecs.open(mdfile_update, 'w+', 'utf-8') as fd:
                     # if it is already contained, truncate it
                     if (i >= 0):
                         html = html[:i]

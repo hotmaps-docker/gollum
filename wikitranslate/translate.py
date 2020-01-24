@@ -15,6 +15,7 @@ import werkzeug
 import json
 import time
 import os
+import codecs
 
 # enforce quotas (https://cloud.google.com/translate/quotas) (very naive implementation)
 quota_char = 0
@@ -26,7 +27,7 @@ config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.j
 if not os.path.exists(config_path):
     raise Exception("%s not found" % config_path)
 
-with open(config_path, "r") as fd:
+with codecs.open(config_path, "r", "utf-8") as fd:
     config = json.load(fd)
 
 if "auth_type" not in config:
