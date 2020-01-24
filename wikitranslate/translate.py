@@ -121,7 +121,7 @@ def translate_single(tdict, source_lang, language):
         print("Resuming after rate limit")
         quota_char = 0
 
-    print("  translating %s → %s: %s" % (source_lang, language, keys))
+    print("  translating %s -> %s: %s" % (source_lang, language, keys))
 
     req = requests.post(URL, headers=headers, json=data)
     response = req.json()
