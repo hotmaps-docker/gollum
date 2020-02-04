@@ -149,7 +149,7 @@ def write_index(index, lang_written, source_lang):
         d_lang_to_write[l] = lang.languages[l]
 
     print(d_lang_to_write)
-    with codes.open(index, "w", "utf-8") as fd:
+    with codecs.open(index, "w", "utf-8") as fd:
         fd.write(template.render(languages=d_lang_to_write, source_lang=source_lang))
 
 
