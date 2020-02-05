@@ -29,7 +29,27 @@ options = {
   end,
   :dummy_auth => false,
   # If you want to make pages private:
-  :protected_routes => ['/uploadFile', '/rename*', '/fileview', '/deleteFile*'],
+  :protected_routes => [
+    '/uploadFile', 
+    '/rename*', 
+    '/fileview/*', 
+    '/fileview', 
+    '/deleteFile*', 
+    '/edit', 
+    '/edit/*'
+    '/revert/*',
+    '/revert',
+    '/create/*',
+    '/create',
+    '/edit/*',
+    '/edit',
+    '/rename/*',
+    '/rename/',
+    '/upload/*',
+    '/upload/',
+    '/delete/*',
+    '/delete'
+  ],
 
   # Specify committer name as just the user name
   :author_format => Proc.new { |user| user.name },
