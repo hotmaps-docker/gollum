@@ -7,4 +7,4 @@ mv /root/hooks/* /root/wikidata/.git/hooks
 
 # run
 service cron start
-/usr/local/bin/gollum /root/wikidata --config config.rb --port 80 --ref $GIT_BRANCH --show-all
+/usr/local/bin/gollum /root/wikidata --config config.rb --port 80 --ref $GIT_BRANCH --show-all >> /var/log/gollum.log 2>&1
