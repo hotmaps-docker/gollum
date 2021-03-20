@@ -4,7 +4,7 @@ cffi==1.12.2
 chardet==3.0.4
 cmarkgfm==0.4.2
 idna==2.8
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 pycparser==2.19
 requests==2.21.0
